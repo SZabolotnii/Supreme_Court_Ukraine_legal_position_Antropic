@@ -2,8 +2,11 @@ import streamlit as st
 from anthropic import Anthropic
 import os
 
-# Налаштування Anthropic клієнта
-antehropic = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
+# Отримання API ключа з секретів Streamlit
+api_key = st.secrets["ANTHROPIC_API_KEY"]
+
+# Ініціалізація клієнта Anthropic
+anthropic = Anthropic(api_key=api_key)
 
 # Системний промпт
 SYSTEM_PROMPT = """
